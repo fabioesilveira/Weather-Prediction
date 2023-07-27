@@ -17,33 +17,57 @@
     <div class="row">
         <div class="column">
             <h2>Search for a City:</h2>
-            <form class="search" action="action_page.php">
-                <input type="text" placeholder="Search.." name="search">
+            <form class="search">
+                <input class="city" type="text" placeholder="Search.." name="search">
                 <button type="submit"><i class="fa fa-search"></i></button>
             </form>
 
-            <div>
-                <button class="history" type="button">Click Me!</button>
-                <button class="history" type="button">Click Me!</button>
-                <button class="history" type="button">Click Me!</button>
-                <button class="history" type="button">Click Me!</button>
-                <button class="history" type="button">Click Me!</button>
-                <button class="history" type="button">Click Me!</button>
-                <button class="history" type="button">Click Me!</button>
-                <button class="history" type="button">Click Me!</button>
+            <div id="historyContainer">
+              
             </div>
         </div>
         <div class="column">
 
-            <div class="currentlyDay"></div>
             
-               <div class="sentence">5-Day Forecast:</div>
-                <div>
-                <div class="estimate"></div>
-                <div class="estimate"></div>
-                <div class="estimate"></div>
-                <div class="estimate"></div>
-                <div class="estimate"></div>
+            <div id="currentlyDay">
+                <h3 id="cityName"></h3>
+                <h3 id="temp"></h3>
+                <h3 id="wind"></h3>
+                <h3 id="humidity"></h3>
+            </div>
+
+            <div class="sentence">5-Day Forecast:</div>
+            <div class="forecast-container">
+                <div class="followUpDays">
+                    <div id="date1"></div>
+                    <div id="temp1"></div>
+                    <div id="wind1"></div>
+                    <div id="humidity1"></div>
+                </div>
+                <div class="followUpDays">
+                    <div id="date2"></div>
+                    <div id="temp2"></div>
+                    <div id="wind2"></div>
+                    <div id="humidity2"></div>
+                </div>
+                <div class="followUpDays">
+                    <div id="date3"></div>
+                    <div id="temp3"></div>
+                    <div id="wind3"></div>
+                    <div id="humidity3"></div>
+                </div>
+                <div class="followUpDays">
+                    <div id="date4"></div>
+                    <div id="temp4"></div>
+                    <div id="wind4"></div>
+                    <div id="humidity4"></div>
+                </div>
+                <div class="followUpDays">
+                    <div id="date5"></div>
+                    <div id="temp5"></div>
+                    <div id="wind5"></div>
+                    <div id="humidity5"></div>
+                </div>
             </div>
 
         </div>

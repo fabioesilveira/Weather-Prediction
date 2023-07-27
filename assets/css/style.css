@@ -48,7 +48,7 @@ h2{
     display: table;
   }
 
-  .history {
+  #history {
     background-color: rgb(196, 196, 196); 
     margin-top: 17px;
     color: black;
@@ -62,14 +62,14 @@ h2{
     
   }
 
-  .currentlyDay{
+  #currentlyDay{
     
     
     margin-top: 30px;
     margin-bottom: 15px;
     margin-left: 17px;
     border: 2px solid black ;
-    padding: 112px;
+    padding: 50px;
     width: 1035px;
     
 }
@@ -78,20 +78,25 @@ h2{
     
     font-size: 30px;
     margin-left: 17px;
-    margin-bottom: 105px;
+    margin-bottom: 30px;
 }
 
-.estimate{
+.followUpDays{
     
     background-color: rgb(28, 28, 181);
-
-    flex-direction: row;
-    display: inline;
-    width: 120px;
+    
+    color: white;
+    width: 15px;
     margin-left: 17px;
     border: 2px solid black ;
     padding: 95px;
     
+    text-align: center;
+    
+}
+
+.forecast-container{
+    display: flex;
 }
 
  .column {
