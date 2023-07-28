@@ -1,55 +1,55 @@
 h1 {
-    text-align:center;
+    text-align: center;
     font-size: 30px;
     color: white;
-    background-image: linear-gradient(to right, rgb(11, 11, 11) ,rgb(51, 51, 209));
+    background-image: linear-gradient(to right, rgb(11, 11, 11), rgb(51, 51, 209));
     padding-top: 14px;
 }
 
-h2{
+h2 {
     font-size: 25px;
 }
 
 * {
     box-sizing: border-box;
-  }
-  
-  
-  form.search input[type=text] {
+}
+
+
+form.search input[type=text] {
     padding: 10px;
     font-size: 17px;
     border: 1px solid grey;
     float: left;
     width: 310px;
     background: #f1f1f1;
-  }
-  
-  
-  form.search button {
+}
+
+
+form.search button {
     float: left;
     width: 40px;
     padding: 10px;
-    background:rgb(28, 28, 181);
+    background: rgb(28, 28, 181);
     color: white;
     font-size: 17px;
     border: 1px solid grey;
-    border-left: none; 
+    border-left: none;
     cursor: pointer;
-  }
-  
-  form.search button:hover {
+}
+
+form.search button:hover {
     background: black;
-  }
-  
-  
-  form.search::after {
+}
+
+
+form.search::after {
     content: "";
     clear: both;
     display: table;
-  }
+}
 
-  #history {
-    background-color: rgb(196, 196, 196); 
+#history {
+    background-color: rgb(196, 196, 196);
     margin-top: 17px;
     color: black;
     text-align: center;
@@ -57,56 +57,56 @@ h2{
     display: flex;
     flex-direction: column;
     align-items: center;
-     width: 350px;
-     cursor: pointer;
-    
-  }
+    width: 350px;
+    cursor: pointer;
 
-  #currentlyDay{
-    
-    
+}
+
+#currentlyDay {
+
+
     margin-top: 30px;
     margin-bottom: 15px;
     margin-left: 17px;
-    border: 2px solid black ;
+    border: 2px solid black;
     padding: 50px;
-    width: 1035px;
-    
+    width: 850x;
+
 }
 
-.sentence{
-    
+.sentence {
+
     font-size: 30px;
     margin-left: 17px;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 
-.followUpDays{
-    
+.followUpDays {
+
     background-color: rgb(28, 28, 181);
-    
+    font-size: 14px;
     color: white;
-    width: 15px;
-    margin-left: 17px;
-    border: 2px solid black ;
-    padding: 95px;
-    
-    text-align: center;
-    
+    text-align: left;
+    margin-left: 13px;
+    border: 2px solid black;
+    padding: 56px;
+
+
 }
 
-.forecast-container{
+.forecast-container {
+
     display: flex;
 }
 
- .column {
+.column {
     float: left;
-  }
-  
-  .left {
+}
+
+.left {
     width: 40%;
-  }
-  
-  .right {
+}
+
+.right {
     width: 60%;
-  }
+}
