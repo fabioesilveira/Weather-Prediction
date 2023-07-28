@@ -1,14 +1,21 @@
 # Weather-prediction
 
 ## Description
-A work calendar is a tool used to keep track of important dates and events related to one's work schedule. A work calendar helps individuals stay organized and ensures that they are aware of their professional commitments. With that in mind, we provide our website, my work day calendar, so users can digitally include details about their work day such as deadlines, meetings, appointments, and work shifts.
+
+The weather forecast is a prediction of the atmospheric conditions expected in a specific area over a given period of time. This forecast is usually provided by meteorologists who study various weather patterns and use sophisticated instruments and computer models to make their predictions. The forecast may include information about temperature, wind speed, humidity, and other weather variables. The weather prediction page, gives to users an estimate of the weather for the next 5 days. 
 
 ## Installation
 N/A
 
 ## Usage
-Open the website in your browser. Header of the website displays current date. Website contains 9 containers for users to add and save text about their work routine. Based on current time of the day, containers will change the color (past:gray, present:red, future:green.)
+
+Enter a city that would like to know the weather for the next 5 days in the search button, Larger box will display weather for the currently day. The 5 small boxes will display weather for the next 5 days
 
 ## Credits
 N/A
 
+## Deployed Site
+
+![Screenshot of Deployed Website](assets/images/Deployed-forecast.png)
+
+[Live Demo Link](https://fabioesilveira.github.io/Weather-prediction/)
