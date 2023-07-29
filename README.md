@@ -9,7 +9,7 @@ N/A
 
 ## Usage
 
-Enter a city that would like to know the weather for the next 5 days in the search button, Larger box will display weather for the currently day. The 5 small boxes will display weather for the next 5 days
+Enter a city in the search bar to find out the weather forecast for the next 5 days. Containers with temp, wind and humidity for each of the next 5 days.
 
 ## Credits
 N/A
