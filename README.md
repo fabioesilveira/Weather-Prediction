@@ -1,18 +1,49 @@
-# Weather-prediction
+# 🌦️ Weather Dashboard
 
-## Description
+A fast and simple Weather Dashboard that displays **current weather conditions**, **5-day forecast**, and automatically saves **search history** using `localStorage`.  
+Built with **HTML, CSS, JavaScript**, and the **OpenWeather API**.
 
-The weather forecast is a prediction of the atmospheric conditions expected in a specific area over a given period of time. This forecast is usually provided by meteorologists who study various weather patterns and use sophisticated instruments and computer models to make their predictions. The forecast may include information about temperature, wind speed, humidity, and other weather variables. The weather prediction page, gives to users an estimate of the weather for the next 5 days. 
+---
 
-## Installation
-N/A
+## 🚀 Features
 
-## Usage
+### 🔍 Search for Any City
+- Type a city name and instantly fetch:
+  - Temperature  
+  - Wind speed  
+  - Humidity  
+  - Weather condition emoji  
 
-Enter a city in the search bar to find out the weather forecast for the next 5 days. Containers with temp, wind and humidity for each of the next 5 days.
+### 📅 5-Day Weather Forecast
+- Uses the OpenWeather 3-hour interval forecast  
+- Displays:
+  - Date  
+  - Temperature  
+  - Wind  
+  - Humidity  
+  - Weather Emoji (☀️🌧️⛈️❄️🌫️)
 
-## Credits
-N/A
+### 🕒 Search History (Persistent)
+- Each search is saved and displayed as a button  
+- Clicking a button instantly loads that city’s weather  
+- Data is stored in `localStorage` and persists after refresh
+
+### 🎨 Clean & Organized Layout
+- **Left column:** search bar + history buttons  
+- **Right column:** current weather + forecast boxes  
+
+---
+
+## 🛠️ Technologies Used
+
+- **HTML5**
+- **CSS3**
+- **JavaScript (ES6+)**
+- **OpenWeather API**
+- **LocalStorage**
+- **Font Awesome**
+
+---
 
 ## Deployed Site
 

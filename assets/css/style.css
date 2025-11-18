@@ -1,112 +1,154 @@
-h1 {
-    text-align: center;
-    font-size: 30px;
-    color: white;
-    background-image: linear-gradient(to right, rgb(11, 11, 11), rgb(51, 51, 209));
-    padding-top: 14px;
-}
-
-h2 {
-    font-size: 25px;
-}
-
+/* Global reset-ish */
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-
-form.search input[type=text] {
-    padding: 10px;
-    font-size: 17px;
-    border: 1px solid grey;
-    float: left;
-    width: 280px;
-    background: #f1f1f1;
+/* Page layout */
+body {
+  padding: 30px;
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
 
+/* Header */
+h1 {
+  text-align: center;
+  font-size: 30px;
+  color: white;
+  background-image: linear-gradient(to right, rgb(11, 11, 11), rgb(51, 51, 209));
+  padding: 14px 10px;
+  border-radius: 6px;
+  margin-bottom: 24px;
+}
+
+/* Subtitles */
+h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* 2-column layout */
+.row {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* Left column: search + history */
+.row .column:first-child {
+  flex: 0 0 260px;  /* narrow column */
+}
+
+/* Right column: current day + forecast */
+.row .column:last-child {
+  flex: 1;
+}
+
+/* Search form */
+form.search {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-radius: 5px;
+  margin-bottom: 12px;
+}
+
+form.search input[type="text"] {
+  width: 195px;
+  padding: 8px;
+  border-radius: 5px;
+  font-size: 15px;
+  border: 1px solid grey;
+  background: #f1f1f1;
+}
 
 form.search button {
-    float: left;
-    width: 40px;
-    padding: 10px;
-    background: rgb(28, 28, 181);
-    color: white;
-    font-size: 17px;
-    border: 1px solid grey;
-    border-left: none;
-    cursor: pointer;
+  width: 60px;
+  padding: 8px;
+  border-radius: 5px;
+  font-size: 15px;
+  background: rgb(28, 28, 181);
+  color: white;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
 }
 
 form.search button:hover {
-    background: black;
+  background: black;
 }
 
-
-form.search::after {
-    content: "";
-    clear: both;
-    display: table;
+/* History container (buttons created by JS) */
+#historyContainer {
+  margin-top: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
-#history {
-    background-color: rgb(196, 196, 196);
-    margin-top: 17px;
-    color: black;
-    text-align: center;
-    font-size: 22px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 320px;
-    cursor: pointer;
-
+#historyContainer button {
+  width: 100%;
+  padding: 6px 8px;
+  font-size: 14px;
+  background-color: rgb(196, 196, 196);
+  color: black;
+  border: 1px solid #999;
+  text-align: left;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
+#historyContainer button:hover {
+  background-color: rgb(170, 170, 170);
+}
+
+/* Current day box */
 #currentlyDay {
-
-
-    margin-top: 30px;
-    margin-bottom: 10px;
-    margin-left: 17px;
-    border: 2px solid black;
-    padding: 50px;
-    width: 850x;
-
+  margin-top: 10px;
+  margin-bottom: 16px;
+  padding: 16px;
+  border: 2px solid black;
+  border-radius: 4px;
+  min-height: 120px;
 }
 
+/* "5-Day Forecast" label */
 .sentence {
-
-    font-size: 30px;
-    margin-left: 17px;
-    margin-bottom: 10px;
+  font-size: 20px;
+  margin: 10px 0;
 }
 
-.followUpDays {
-
-    background-color: rgb(28, 28, 181);
-    font-size: 14px;
-    color: white;
-    text-align: left;
-    margin-left: 13px;
-    border: 2px solid black;
-    padding: 56px;
-
-
-}
-
+/* Forecast cards container */
 .forecast-container {
-
-    display: flex;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
-.column {
-    float: left;
+/* Each daily forecast card */
+.followUpDays {
+  background-color: rgb(28, 28, 181);
+  color: white;
+  font-size: 14px;
+  padding: 10px;
+  border: 2px solid black;
+  border-radius: 4px;
+  flex: 1 1 calc(20% - 10px);  /* up to 5 in a row, responsive */
 }
 
-.left {
-    width: 40%;
-}
+/* Small screens: stack columns */
+@media (max-width: 700px) {
+  .row {
+    flex-direction: column;
+  }
 
-.right {
-    width: 60%;
+  .row .column:first-child,
+  .row .column:last-child {
+    flex: 1 1 100%;
+  }
+
+  form.search input[type="text"] {
+    width: 100%;
+  }
 }

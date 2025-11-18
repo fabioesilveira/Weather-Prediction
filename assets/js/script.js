@@ -1,70 +1,109 @@
-
 var searchHistory = [];
-var weatherApiRootUrl = 'https://api.openweathermap.org';
 var weatherApiKey = '5a1ecf61ee1bbe450ff798f579f1988c';
 
-var searchForm = document.querySelector('.search')
-var searchInput = document.querySelector('.city')
-var currentlyDayContainer = document.querySelector('#currentlyDay');
-var followUpDaysContainer = document.querySelector('#followUpDays');
+var searchForm = document.querySelector('.search');
+var searchInput = document.querySelector('.city');
 var searchHistoryContainer = document.querySelector('#historyContainer');
-var city = ""
-var cities = []
 
+var city = "";
+var cities = JSON.parse(localStorage.getItem("cities")) || [];
 
-function searchCity(event) {
-    event.preventDefault()
-    var btn = document.createElement('button')
-    btn.id = 'history'
-    btn.textContent = searchInput.value
-    city = searchInput.value
-    cities.push(city)
-    localStorage.setItem('cities', JSON.stringify(cities))
-    searchHistoryContainer.appendChild(btn)
-    fetch('https://api.openweathermap.org/data/2.5/weather?q=' + searchInput.value + '&appid=5a1ecf61ee1bbe450ff798f579f1988c')
-        .then(res => res.json())
-        .then(data => {
-            console.log(data)
-
-            document.querySelector('#temp').textContent = 'temp: ' + data.main.temp
-            document.querySelector('#wind').textContent = 'wind: ' + data.wind.speed
-            document.querySelector('#humidity').textContent = 'humidity: ' + data.main.humidity
-
-
-
-
-            fetch('https://api.openweathermap.org/data/2.5/forecast?lat=' + data.coord.lat + '&lon=' + data.coord.lon + '&appid=5a1ecf61ee1bbe450ff798f579f1988c')
-                .then(res => res.json())
-                .then(data => {
-                    console.log(data)
-                    document.querySelector('#cityName').textContent = city + ": " + data.list[0].dt_txt.substring(0, 10)
-                    document.querySelector('#date1').textContent = 'date: ' + data.list[0].dt_txt.substring(10, 0)
-                    document.querySelector('#temp1').textContent = 'temp: ' + data.list[0].main.temp
-                    document.querySelector('#wind1').textContent = 'wind: ' + data.list[0].wind.speed
-                    document.querySelector('#humidity1').textContent = 'humidity: ' + data.list[0].main.humidity
-
-                    document.querySelector('#date2').textContent = 'date: ' + data.list[8].dt_txt.substring(0, 10)
-                    document.querySelector('#temp2').textContent = 'temp: ' + data.list[8].main.temp
-                    document.querySelector('#wind2').textContent = 'wind: ' + data.list[8].wind.speed
-                    document.querySelector('#humidity2').textContent = 'humidity: ' + data.list[8].main.humidity
-
-                    document.querySelector('#date3').textContent = 'date: ' + data.list[16].dt_txt.substring(0, 10)
-                    document.querySelector('#temp3').textContent = 'temp: ' + data.list[16].main.temp
-                    document.querySelector('#wind3').textContent = 'wind: ' + data.list[16].wind.speed
-                    document.querySelector('#humidity3').textContent = 'humidity: ' + data.list[16].main.humidity
-
-                    document.querySelector('#date4').textContent = 'date: ' + data.list[24].dt_txt.substring(0, 10)
-                    document.querySelector('#temp4').textContent = 'temp: ' + data.list[24].main.temp
-                    document.querySelector('#wind4').textContent = 'wind: ' + data.list[24].wind.speed
-                    document.querySelector('#humidity4').textContent = 'humidity: ' + data.list[24].main.humidity
-
-                    document.querySelector('#date5').textContent = 'date: ' + data.list[32].dt_txt.substring(0, 10)
-                    document.querySelector('#temp5').textContent = 'temp: ' + data.list[32].main.temp
-                    document.querySelector('#wind5').textContent = 'wind: ' + data.list[32].wind.speed
-                    document.querySelector('#humidity5').textContent = 'humidity: ' + data.list[32].main.humidity
-                })
-        })
+// ---------------- Emoji helper ----------------
+function getWeatherEmoji(id) {
+    if (id >= 200 && id < 300) return "⛈️";
+    if (id >= 300 && id < 400) return "🌦️";
+    if (id >= 500 && id < 600) return "🌧️";
+    if (id >= 600 && id < 700) return "❄️";
+    if (id >= 700 && id < 800) return "🌫️";
+    if (id === 800) return "☀️";
+    if (id > 800 && id < 900) return "☁️";
+    return "🌡️";
 }
 
-searchForm.addEventListener('submit', searchCity)
+// ---------------- RENDER HISTORY ON PAGE LOAD ----------------
+function renderHistory() {
+    searchHistoryContainer.innerHTML = "";
 
+    cities.forEach((cityName) => {
+        var btn = document.createElement("button");
+        btn.classList.add("history-btn");
+        btn.textContent = cityName;
+
+        // Click event for each history button
+        btn.addEventListener("click", function () {
+            searchWeather(cityName);
+        });
+
+        searchHistoryContainer.appendChild(btn);
+    });
+}
+
+// ---------------- SAVE NEW CITY TO HISTORY ----------------
+function saveToHistory(cityName) {
+    if (!cities.includes(cityName)) {
+        cities.push(cityName);
+        localStorage.setItem("cities", JSON.stringify(cities));
+        renderHistory();
+    }
+}
+
+// ---------------- FETCH + DISPLAY WEATHER ----------------
+function searchWeather(cityName) {
+    // CURRENT WEATHER
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${weatherApiKey}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log("CURRENT WEATHER:", data);
+
+            var emoji = getWeatherEmoji(data.weather[0].id);
+
+            document.querySelector('#temp').textContent = emoji + ' temp: ' + data.main.temp;
+            document.querySelector('#wind').textContent = 'wind: ' + data.wind.speed;
+            document.querySelector('#humidity').textContent = 'humidity: ' + data.main.humidity;
+
+            // FORECAST
+            fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${data.coord.lat}&lon=${data.coord.lon}&appid=${weatherApiKey}`)
+                .then(res => res.json())
+                .then(data => {
+                    console.log("FORECAST:", data);
+
+                    document.querySelector('#cityName').textContent =
+                        cityName + ": " + data.list[0].dt_txt.substring(0, 10);
+
+                    // 5-day blocks
+                    const indexes = [0, 8, 16, 24, 32];
+
+                    indexes.forEach((idx, i) => {
+                        let emoji = getWeatherEmoji(data.list[idx].weather[0].id);
+
+                        document.querySelector(`#date${i + 1}`).textContent =
+                            emoji + " date: " + data.list[idx].dt_txt.substring(0, 10);
+
+                        document.querySelector(`#temp${i + 1}`).textContent =
+                            "temp: " + data.list[idx].main.temp;
+
+                        document.querySelector(`#wind${i + 1}`).textContent =
+                            "wind: " + data.list[idx].wind.speed;
+
+                        document.querySelector(`#humidity${i + 1}`).textContent =
+                            "humidity: " + data.list[idx].main.humidity;
+                    });
+                });
+        });
+}
+
+// ---------------- FORM SUBMIT ----------------
+function searchCity(event) {
+    event.preventDefault();
+
+    var cityName = searchInput.value.trim();
+    if (!cityName) return;
+
+    saveToHistory(cityName);
+    searchWeather(cityName);
+}
+
+searchForm.addEventListener('submit', searchCity);
+
+// Initial render
+renderHistory();
