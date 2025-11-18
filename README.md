@@ -49,4 +49,4 @@ Built with **HTML, CSS, JavaScript**, and the **OpenWeather API**.
 
 ![Screenshot of Deployed Website](assets/images/Deployed-forecast.png)
 
-[Live Demo Link](https://fabioesilveira.github.io/Weather-prediction/)
+[Live Demo Link](https://fabioesilveira.github.io/Weather-Prediction/)
