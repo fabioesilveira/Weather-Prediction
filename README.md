@@ -1,20 +1,20 @@
-# 🌦️ Weather Dashboard
+# Weather Dashboard
 
 A fast and simple Weather Dashboard that displays **current weather conditions**, **5-day forecast**, and automatically saves **search history** using `localStorage`.  
 Built with **HTML, CSS, JavaScript**, and the **OpenWeather API**.
 
 ---
 
-## 🚀 Features
+## Features
 
-### 🔍 Search for Any City
+### Search for Any City
 - Type a city name and instantly fetch:
   - Temperature  
   - Wind speed  
   - Humidity  
   - Weather condition emoji  
 
-### 📅 5-Day Weather Forecast
+### 5-Day Weather Forecast
 - Uses the OpenWeather 3-hour interval forecast  
 - Displays:
   - Date  
@@ -23,18 +23,18 @@ Built with **HTML, CSS, JavaScript**, and the **OpenWeather API**.
   - Humidity  
   - Weather Emoji (☀️🌧️⛈️❄️🌫️)
 
-### 🕒 Search History (Persistent)
+### Search History (Persistent)
 - Each search is saved and displayed as a button  
 - Clicking a button instantly loads that city’s weather  
 - Data is stored in `localStorage` and persists after refresh
 
-### 🎨 Clean & Organized Layout
+### Clean & Organized Layout
 - **Left column:** search bar + history buttons  
 - **Right column:** current weather + forecast boxes  
 
 ---
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - **HTML5**
 - **CSS3**
