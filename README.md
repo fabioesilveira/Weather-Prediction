@@ -29,7 +29,7 @@ Built with **HTML, CSS, JavaScript**, and the **OpenWeather API**.
 - Data is stored in `localStorage` and persists after refresh
 
 =======
-### 🎨 Clean & Organized Layout
+### Clean & Organized Layout
 - Left column: search bar + search history buttons
 - Right column: current weather details + 5-day forecast cards
 - Responsive layout for desktop and mobile screens 
