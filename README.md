@@ -28,9 +28,11 @@ Built with **HTML, CSS, JavaScript**, and the **OpenWeather API**.
 - Clicking a button instantly loads that city’s weather  
 - Data is stored in `localStorage` and persists after refresh
 
-### Clean & Organized Layout
-- **Left column:** search bar + history buttons  
-- **Right column:** current weather + forecast boxes  
+=======
+### 🎨 Clean & Organized Layout
+- Left column: search bar + search history buttons
+- Right column: current weather details + 5-day forecast cards
+- Responsive layout for desktop and mobile screens 
 
 ---
 

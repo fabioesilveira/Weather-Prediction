@@ -6,7 +6,22 @@ var searchInput = document.querySelector('.city');
 var searchHistoryContainer = document.querySelector('#historyContainer');
 
 var city = "";
-var cities = JSON.parse(localStorage.getItem("cities")) || [];
+var defaultCities = [
+    "San Francisco",
+    "Los Angeles",
+    "San Jose",
+    "San Diego",
+    "Sacramento",
+    "Oakland",
+    "Berkeley",
+    "Palm Springs"
+];
+
+var cities = JSON.parse(localStorage.getItem("cities")) || defaultCities;
+
+if (!localStorage.getItem("cities")) {
+    localStorage.setItem("cities", JSON.stringify(defaultCities));
+}
 
 // ---------------- Emoji helper ----------------
 function getWeatherEmoji(id) {
@@ -18,6 +33,15 @@ function getWeatherEmoji(id) {
     if (id === 800) return "☀️";
     if (id > 800 && id < 900) return "☁️";
     return "🌡️";
+}
+
+function formatCityName(cityName) {
+    return cityName
+        .toLowerCase()
+        .trim()
+        .split(/\s+/)
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(" ");
 }
 
 // ---------------- RENDER HISTORY ON PAGE LOAD ----------------
@@ -40,11 +64,18 @@ function renderHistory() {
 
 // ---------------- SAVE NEW CITY TO HISTORY ----------------
 function saveToHistory(cityName) {
-    if (!cities.includes(cityName)) {
-        cities.push(cityName);
-        localStorage.setItem("cities", JSON.stringify(cities));
-        renderHistory();
+    var formattedCityName = formatCityName(cityName);
+
+    cities = cities.filter(city => city !== formattedCityName);
+
+    cities.unshift(formattedCityName);
+
+    if (cities.length > 8) {
+        cities.pop();
     }
+
+    localStorage.setItem("cities", JSON.stringify(cities));
+    renderHistory();
 }
 
 // ---------------- FETCH + DISPLAY WEATHER ----------------
@@ -76,8 +107,11 @@ function searchWeather(cityName) {
                     indexes.forEach((idx, i) => {
                         let emoji = getWeatherEmoji(data.list[idx].weather[0].id);
 
-                        document.querySelector(`#date${i + 1}`).textContent =
-                            emoji + " date: " + data.list[idx].dt_txt.substring(0, 10);
+                        document.querySelector(`#date${i + 1}`).innerHTML =
+                            emoji + " " + new Date(data.list[idx].dt_txt).toLocaleDateString("en-US", {
+                                day: "numeric",
+                                month: "short"
+                            }) + "<br>";
 
                         document.querySelector(`#temp${i + 1}`).textContent =
                             "temp: " + data.list[idx].main.temp;
@@ -99,8 +133,11 @@ function searchCity(event) {
     var cityName = searchInput.value.trim();
     if (!cityName) return;
 
-    saveToHistory(cityName);
-    searchWeather(cityName);
+    var formattedCityName = formatCityName(cityName);
+
+    searchInput.value = formattedCityName;
+    saveToHistory(formattedCityName);
+    searchWeather(formattedCityName);
 }
 
 searchForm.addEventListener('submit', searchCity);

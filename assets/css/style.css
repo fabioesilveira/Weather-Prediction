@@ -37,7 +37,8 @@ h2 {
 
 /* Left column: search + history */
 .row .column:first-child {
-  flex: 0 0 260px;  /* narrow column */
+  flex: 0 0 260px;
+  /* narrow column */
 }
 
 /* Right column: current day + forecast */
@@ -117,6 +118,7 @@ form.search button:hover {
 .sentence {
   font-size: 20px;
   margin: 10px 0;
+  font-weight: bold;
 }
 
 /* Forecast cards container */
@@ -134,7 +136,8 @@ form.search button:hover {
   padding: 10px;
   border: 2px solid black;
   border-radius: 4px;
-  flex: 1 1 calc(20% - 10px);  /* up to 5 in a row, responsive */
+  flex: 1 1 calc(20% - 10px);
+  /* up to 5 in a row, responsive */
 }
 
 /* Small screens: stack columns */
@@ -150,5 +153,86 @@ form.search button:hover {
 
   form.search input[type="text"] {
     width: 100%;
+  }
+}
+
+.followUpDays div:first-child {
+  margin-bottom: 6px;
+  font-weight: bold;
+}
+
+#wind,
+#humidity {
+  margin-left: 25px;
+}
+
+@media (max-width: 768px) {
+  header {
+    width: 90%;
+    margin: 20px auto 24px;
+  }
+
+  header h1 {
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 2.2rem;
+    margin-bottom: -15px;
+  }
+
+  .row {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .column {
+    width: 100%;
+  }
+
+  .search {
+    display: flex;
+    align-items: stretch;
+    gap: 10px;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  .city {
+    flex: 1;
+    width: auto;
+    min-width: 0;
+  }
+
+  .search button {
+    width: 90px;
+    flex-shrink: 0;
+  }
+
+  #historyContainer {
+    width: 100%;
+  }
+
+  .history-btn {
+    width: 100%;
+    display: block;
+    box-sizing: border-box;
+  }
+
+  #currentlyDay {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .forecast-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .followUpDays {
+    width: calc(50% - 6px);
+    box-sizing: border-box;
   }
 }
